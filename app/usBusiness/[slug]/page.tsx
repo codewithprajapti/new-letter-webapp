@@ -9,8 +9,7 @@ interface NewsDetailProps {
   };
 }
 
-const url = `https://newsapi.org/v2/everything?q=tesla&sortBy=publishedAt&apiKey=
-${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
+const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
 export async function generateStaticParams() {
   const articles = await fetchApis(url);
 

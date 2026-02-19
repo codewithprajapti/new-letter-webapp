@@ -1,11 +1,12 @@
-import { TeslaApi } from "@/types/tesla-api";
+import { Api } from "@/types/apis";
 import Image from "next/image";
-import { Clock } from "lucide-react";
+import { Clock, Calendar } from "lucide-react";
 import Link from "next/link";
 import { slugify } from "@/libs/slug";
+import { formatDate, formatTime } from "@/libs/formateDateAndTime";
 
 interface NewsCardProps {
-  article: TeslaApi;
+  article: Api;
 }
 
 export default function NewsCard({ article }: NewsCardProps) {
@@ -27,9 +28,15 @@ export default function NewsCard({ article }: NewsCardProps) {
         </div>
         <div className="px-2 flex flex-col gap-3 pb-4">
           <h1 className="text-lg font-black"> {article.title} </h1>
-          <div className="flex items-center gap-2">
-            <Clock />
-            <p className="text-sm"> {article.publishedAt} </p>
+          <div className="flex gap-5 items-center">
+            <div className="flex items-center gap-2">
+              <Calendar />
+              <p className="text-sm"> {formatDate(article.publishedAt)} </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock />
+              <p className="text-sm"> {formatTime(article.publishedAt)} </p>
+            </div>
           </div>
         </div>
       </Link>

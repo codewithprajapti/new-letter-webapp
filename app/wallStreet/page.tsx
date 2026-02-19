@@ -2,12 +2,9 @@ import NewsCard from "@/components/NewsCard";
 import { fetchApis } from "@/libs/api-fetch";
 import { Api } from "@/types/apis";
 
-
 export default async function page() {
-  const url = `https://newsapi.org/v2/everything?q=tesla&sortBy=publishedAt&apiKey=
-${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
+  const url = `https://newsapi.org/v2/everything?domains=wsj.com&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
   const articles: Api[] = await fetchApis(url);
-  console.log(process.env.NEXT_PUBLIC_NEWS_API_KEY)
 
   return (
     <>

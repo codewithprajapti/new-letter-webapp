@@ -1,4 +1,4 @@
-    export interface TeslaApi {
+    export interface Api {
     source: {
         id: string | null;
         name: string;
@@ -12,8 +12,8 @@
     content: string | null;
     }
 
-    export interface TeslaApiResponse {
+    export interface ApiResponse {
     status: string;
     totalResults: number;
-    articles: TeslaApi[];
+    articles: Api[];
     }
