@@ -7,13 +7,15 @@ import { formatDate, formatTime } from "@/libs/formateDateAndTime";
 
 interface NewsCardProps {
   article: Api;
+  basePath?: string;
 }
 
-export default function NewsCard({ article }: NewsCardProps) {
+export default function NewsCard({ article, basePath }: NewsCardProps) {
   const slug = slugify(article.title);
+  const href = basePath ? `/${basePath}/${slug}` : `/${slug}`;
   return (
     <>
-      <Link className="flex flex-col bg-white gap-3 " href={`/${slug}`}>
+      <Link className="flex flex-col bg-white gap-3 " href={href}>
         <div className="relative w-full aspect-video">
           <Image
             src={
