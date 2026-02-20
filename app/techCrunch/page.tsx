@@ -1,6 +1,22 @@
 import NewsCard from "@/components/NewsCard";
 import { fetchApis } from "@/libs/api-fetch";
 import { Api } from "@/types/apis";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "TechCrunch Technology & Startup News",
+  description:
+    "Latest technology news, startup funding updates, AI trends, and innovation insights from TechCrunch coverage.",
+  keywords: [
+    "TechCrunch news",
+    "startup funding",
+    "AI news",
+    "technology updates",
+  ],
+  alternates: {
+    canonical: "/techcrunch",
+  },
+};
 
 export default async function page() {
   const url = `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;

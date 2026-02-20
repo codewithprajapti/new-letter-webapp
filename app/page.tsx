@@ -1,13 +1,35 @@
 import NewsCard from "@/components/NewsCard";
 import { fetchApis } from "@/libs/api-fetch";
 import { Api } from "@/types/apis";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Tesla News & EV Industry Updates",
+  description:
+    "Latest Tesla news, electric vehicle updates, Elon Musk announcements, stock performance and EV market trends.",
+  keywords: [
+    "Tesla news",
+    "Elon Musk",
+    "EV industry",
+    "Tesla stock",
+    "electric vehicles",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Tesla News & EV Industry Updates",
+    description:
+      "Stay updated with Tesla developments, EV technology, and market insights.",
+    url: "/",
+  },
+};
 
 export default async function page() {
   const url = `https://newsapi.org/v2/everything?q=tesla&sortBy=publishedAt&apiKey=
 ${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
   const articles: Api[] = await fetchApis(url);
-  console.log(process.env.NEXT_PUBLIC_NEWS_API_KEY)
+  console.log(process.env.NEXT_PUBLIC_NEWS_API_KEY);
 
   return (
     <>
