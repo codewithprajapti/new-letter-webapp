@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { auth } from "../auth";
-import SignIn from "./SignIn";
 import { SignOut } from "./SignOut";
+import LoginBtn from "./LoginBtn";
 
 export default async function UserComponent() {
   const session = await auth();
   const user = session?.user;
 
   if (!user) {
-    return <SignIn />;
+    return <LoginBtn />;
   }
 
   const image = user.image || "/Avatar.png";

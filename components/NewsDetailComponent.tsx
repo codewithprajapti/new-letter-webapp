@@ -17,7 +17,6 @@ export default function NewsDetailComponent({ article }: NewsDetailProps) {
             src={article.urlToImage ?? fallback}
             alt={article.title}
             fill
-            priority
             quality={75}
             sizes="100vw"
             className="object-cover"
