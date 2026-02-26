@@ -23,6 +23,7 @@ export default function NewsDetailComponent({ article }: NewsDetailProps) {
             className="object-cover"
             placeholder="blur"
             blurDataURL="/image-placeholder.png"
+            loading="lazy"
           />
         </div>
         <h1 className="text-lg md:text-2xl font-black md:font-bold text-blue-900">
