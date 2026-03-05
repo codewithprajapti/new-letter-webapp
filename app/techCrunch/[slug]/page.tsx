@@ -4,6 +4,8 @@ import { Api } from "@/types/apis";
 import NewsDetailComponent from "@/components/NewsDetailComponent";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import CommentForm from "@/components/CommentForm";
+import DisplayComments from "@/components/DisplayComments";
 
 export const dynamic = "force-dynamic";
 
@@ -21,9 +23,9 @@ export async function generateMetadata({
   const { slug } = await params;
 
   const articles: Api[] | null = await fetchApis(url);
-   if(articles == null){
-      notFound()
-    }
+  if (articles == null) {
+    notFound();
+  }
   const article = articles.find((item) => slugify(item.title) === slug);
 
   if (!article) {
@@ -40,8 +42,8 @@ export default async function NewsDetail({ params }: NewsDetailProps) {
   const { slug } = await params;
 
   const articles: Api[] | null = await fetchApis(url);
-   if(articles == null){
-    notFound()
+  if (articles == null) {
+    notFound();
   }
   const article = articles.find((item) => slugify(item.title) === slug);
 
@@ -50,8 +52,18 @@ export default async function NewsDetail({ params }: NewsDetailProps) {
   }
 
   return (
-    <article className="px-2 md:px-20">
-      <NewsDetailComponent article={article} />
-    </article>
+    <>
+      <div className="px-2 pb-2 md:px-20 md:pb-5 flex flex-col">
+        <article>
+          <NewsDetailComponent article={article} />
+        </article>
+        <div>
+          <CommentForm article={article} />
+        </div>
+        <div>
+          <DisplayComments article={article} />
+        </div>
+      </div>
+    </>
   );
 }
